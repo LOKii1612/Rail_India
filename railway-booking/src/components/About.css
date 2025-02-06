@@ -1,0 +1,89 @@
+/* 🌟 About Page Styling */
+.about-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #1a237e, #0a3d62); /* Gradient Background */
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* 🌟 Header Styling */
+.about-header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #ffcc00; /* Yellow Highlight */
+}
+
+.subtitle {
+  font-size: 18px;
+  font-style: italic;
+  color: #f8f9fa;
+  margin-bottom: 25px;
+}
+
+/* 🌟 About Content */
+.about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* 🌟 Mission Statement */
+.mission {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* 🌟 Footer Message */
+.about-footer {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ✨ Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px;
+  }
+
+  .about-header h1 {
+    font-size: 28px;
+  }
+
+  .about-content p {
+    font-size: 16px;
+  }
+
+  .mission {
+    font-size: 18px;
+  }
+}

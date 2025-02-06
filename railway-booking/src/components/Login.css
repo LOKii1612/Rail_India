@@ -1,62 +1,107 @@
-/* 🔵 Background Styling */
-.login-container {
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling issues */
+  }
+  
+  /* Fix background image issue */
+  .login-container {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f8f9fa; /* Light Grey Background */
+    background: url('./treee.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image fully covers the page */
+    position: relative;
   }
   
-  /* 📦 Login Box */
+  /* Add a dark overlay for better readability */
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darken the background for better contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Stylish login box */
   .login-box {
-    background: white;
-    padding: 30px;
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white box */
+    padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 350px;
+    max-width: 400px;
+    width: 90%;
   }
   
-  /* 📝 Input Fields */
+  /* Title styles */
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Input fields */
   .input-field {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
   }
   
-  /* 🔘 Login Button */
+  /* Login button */
   .login-btn {
     width: 100%;
-    background: linear-gradient(45deg, #0a3d62, #1a5276); /* Dark Blue Gradient */
-    color: white;
     padding: 12px;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
+    color: white;
     font-size: 18px;
     cursor: pointer;
+    margin-top: 10px;
     transition: background 0.3s;
   }
   
   .login-btn:hover {
-    background: linear-gradient(45deg, #1a5276, #2e86c1); /* Slightly Lighter Blue */
+    background-color: #0056b3;
   }
   
-  /* 🔗 Register Link */
+  /* Register link */
   .register-link {
     margin-top: 15px;
     font-size: 14px;
   }
   
   .register-link a {
-    color: #0a3d62; /* Dark Blue */
-    font-weight: bold;
+    color: #007bff;
     text-decoration: none;
+    font-weight: bold;
   }
   
   .register-link a:hover {
     text-decoration: underline;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .login-box {
+      width: 80%;
+      padding: 20px;
+    }
   }
   

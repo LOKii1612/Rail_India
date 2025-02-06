@@ -1,117 +1,150 @@
-/* 🔵 Background Styling */
-.train-container {
+/* .search-box {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f8f9fa; /* Light Grey Background */
-    padding: 20px;
-  }
-  
-  /* 🚆 Title */
-  .train-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0a3d62; /* Dark Blue */
+    gap: 10px;
     margin-bottom: 20px;
   }
   
-  /* 🔍 Search Box */
-  .search-box {
-    display: flex;
-    gap: 10px;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search-box input {
-    width: 200px;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .search-box input:focus {
-    border-color: #1a5276; /* Dark Blue */
-    outline: none;
-  }
-  
-  .search-box button {
-    padding: 10px 15px;
-    background: linear-gradient(45deg, #1a5276, #2e86c1);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .search-box button:hover {
-    background: linear-gradient(45deg, #2e86c1, #1a5276);
-  }
-  
-  /* 🎫 Train List */
   .train-list {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
   }
   
-  /* ❌ No Trains Found */
-  .no-trains {
-    color: red;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  /* 🚆 Train Cards */
   .train-card {
-    background: white;
-    padding: 15px;
+    width: 300px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
+    transition: 0.3s;
   }
   
   .train-card:hover {
-    transform: scale(1.02);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  */
+  
+
+  /* ✅ Light cream background */
+body {
+    background-color: #f5f5dc;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
   }
   
-  /* 🏷️ Train Name */
-  .train-name {
-    font-size: 18px;
+  /* ✅ Container Styling */
+  .train-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* ✅ Title Styling */
+  .train-title {
+    font-size: 2rem;
     font-weight: bold;
-    color: #0a3d62;
-    margin-bottom: 5px;
+    color: #8B4513; /* Saddle Brown */
+    margin-bottom: 20px;
   }
   
-  /* 📍 Route */
-  .train-route {
-    font-size: 16px;
-    color: #555;
+  /* ✅ Search Box Styling */
+  .search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
   }
   
-  /* 🔘 Book Button */
-  .book-btn {
-    background: linear-gradient(45deg, #0a3d62, #1a5276);
-    color: white;
+  .search-box input {
+    padding: 10px;
+    border: 2px solid #d2691e; /* Chocolate */
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    width: 200px;
+  }
+  
+  .search-box button {
+    background-color: #d2691e; /* Chocolate */
+    color: #fff;
     padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   
-  .book-btn:hover {
-    background: linear-gradient(45deg, #1a5276, #2e86c1);
-    transform: scale(1.05);
+  .search-box button:hover {
+    background-color: #a0522d; /* Darker Chocolate */
+  }
+  
+  /* ✅ Train List Container */
+  .train-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* ✅ Train Card Styling */
+  .train-card {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .train-card:hover {
+    transform: scale(1.03);
+  }
+  
+  /* ✅ Train Name */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #8B4513; /* Saddle Brown */
+  }
+  
+  /* ✅ Train Route */
+  .card-text {
+    font-size: 1.2rem;
+    color: #5a3e2b;
+  }
+  
+  /* ✅ Book Now Button */
+  .train-card button {
+    background-color: #228B22; /* Forest Green */
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+  
+  .train-card button:hover {
+    background-color: #006400; /* Dark Green */
+  }
+  
+  /* ✅ Responsive Design */
+  @media (max-width: 768px) {
+    .train-container {
+      width: 90%;
+    }
+  
+    .search-box {
+      flex-direction: column;
+    }
+  
+    .search-box input {
+      width: 100%;
+    }
   }
   

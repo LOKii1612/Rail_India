@@ -140,9 +140,163 @@
 // export default Bookings;
 
 
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import './Bookings.css'; // Import the new CSS file
+
+// const API_BASE_URL = 'http://localhost:3000';
+
+// function Bookings() {
+//   const [bookingId, setBookingId] = useState('');
+//   const [booking, setBooking] = useState(null);
+//   const [error, setError] = useState('');
+//   const token = localStorage.getItem('token');
+
+//   const fetchBookingDetails = async () => {
+//     if (!token) {
+//       setError('Unauthorized access. Please log in.');
+//       return;
+//     }
+    
+//     if (!bookingId.trim()) {
+//       setError('Please enter a valid Booking ID.');
+//       return;
+//     }
+
+//     try {
+//       const response = await axios.get(`${API_BASE_URL}/booking/${bookingId}`, {
+//         headers: { Authorization: token },
+//       });
+//       setBooking(response.data);
+//       setError('');
+//     } catch (error) {
+//       console.error('Error fetching booking details:', error);
+//       setError('Booking not found or unauthorized.');
+//       setBooking(null);
+//     }
+//   };
+
+//   return (
+//     <div className="booking-container">
+//       <div className="booking-box">
+//         <h2>Check Booking Details</h2>
+//         <input
+//           type="text"
+//           placeholder="Enter Booking ID"
+//           value={bookingId}
+//           onChange={(e) => setBookingId(e.target.value)}
+//           className="input-field"
+//         />
+//         <button onClick={fetchBookingDetails} className="fetch-btn">
+//           Get Booking Details
+//         </button>
+
+//         {/* Error Message */}
+//         {error && <p className="error-message">{error}</p>}
+
+//         {/* Booking Details */}
+//         {booking && (
+//           <div className="booking-card">
+//             <h5>Train Details - {booking.train_name}</h5>
+//             <p><strong>Train ID:</strong> {booking.train_id}</p>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Bookings;
+
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import './Bookings.css'; // Ensure you have the CSS file for styling
+
+// const API_BASE_URL = 'http://localhost:3000';
+
+// function Bookings() {
+//   const [bookingId, setBookingId] = useState('');
+//   const [booking, setBooking] = useState(null);
+//   const [error, setError] = useState('');
+//   const [loading, setLoading] = useState(false);
+//   const token = localStorage.getItem('token');
+
+//   const fetchBookingDetails = async () => {
+//     setError('');
+//     setBooking(null);
+
+//     if (!token) {
+//       setError('Unauthorized access. Please log in.');
+//       return;
+//     }
+
+//     if (!bookingId.trim()) {
+//       setError('Please enter a valid Booking ID.');
+//       return;
+//     }
+
+//     setLoading(true);
+//     try {
+//       const response = await axios.get(`${API_BASE_URL}/booking/${bookingId}`, {
+//         headers: { Authorization: token },
+//       });
+
+//       setBooking(response.data);
+//     } catch (error) {
+//       console.error('Error fetching booking details:', error);
+//       setError('Booking not found or unauthorized.');
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="booking-container">
+//       <div className="booking-box">
+//         <h2>Check Booking Details</h2>
+
+//         {/* Booking ID Input */}
+//         <input
+//           type="text"
+//           placeholder="Enter Booking ID"
+//           value={bookingId}
+//           onChange={(e) => {
+//             setBookingId(e.target.value);
+//             setError('');
+//           }}
+//           className="input-field"
+//         />
+
+//         <button onClick={fetchBookingDetails} className="fetch-btn">
+//           {loading ? 'Fetching...' : 'Get Booking Details'}
+//         </button>
+
+//         {/* Error Message */}
+//         {error && <p className="error-message">{error}</p>}
+
+//         {/* Loading Indicator */}
+//         {loading && <p className="loading-text">Loading booking details...</p>}
+
+//         {/* Booking Details */}
+//         {booking && (
+//           <div className="booking-card">
+//             <h6 >Train Details - {booking.train_name}</h6>
+//             {/* <p><strong>Train ID:</strong> {booking.train_id}</p> */}
+//             <p><strong>Source:</strong> {booking.source}</p>
+//             <p><strong>Destination:</strong> {booking.destination}</p>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Bookings;
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Bookings.css'; // Import the new CSS file
+import './Bookings.css'; // Ensure you have the updated CSS file
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -150,57 +304,75 @@ function Bookings() {
   const [bookingId, setBookingId] = useState('');
   const [booking, setBooking] = useState(null);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const token = localStorage.getItem('token');
 
   const fetchBookingDetails = async () => {
+    setError('');
+    setBooking(null);
+
     if (!token) {
       setError('Unauthorized access. Please log in.');
       return;
     }
-    
+
     if (!bookingId.trim()) {
       setError('Please enter a valid Booking ID.');
       return;
     }
 
+    setLoading(true);
     try {
       const response = await axios.get(`${API_BASE_URL}/booking/${bookingId}`, {
         headers: { Authorization: token },
       });
+
       setBooking(response.data);
-      setError('');
     } catch (error) {
       console.error('Error fetching booking details:', error);
       setError('Booking not found or unauthorized.');
-      setBooking(null);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="booking-container">
-      <div className="booking-box">
-        <h2>Check Booking Details</h2>
-        <input
-          type="text"
-          placeholder="Enter Booking ID"
-          value={bookingId}
-          onChange={(e) => setBookingId(e.target.value)}
-          className="input-field"
-        />
-        <button onClick={fetchBookingDetails} className="fetch-btn">
-          Get Booking Details
-        </button>
+      <div className="overlay">
+        <div className="booking-box">
+          <h2>Check Booking Details</h2>
 
-        {/* Error Message */}
-        {error && <p className="error-message">{error}</p>}
+          {/* Booking ID Input */}
+          <input
+            type="text"
+            placeholder="Enter Booking ID"
+            value={bookingId}
+            onChange={(e) => {
+              setBookingId(e.target.value);
+              setError('');
+            }}
+            className="input-field"
+          />
 
-        {/* Booking Details */}
-        {booking && (
-          <div className="booking-card">
-            <h5>Train Details - {booking.train_name}</h5>
-            <p><strong>Train ID:</strong> {booking.train_id}</p>
-          </div>
-        )}
+          <button onClick={fetchBookingDetails} className="fetch-btn">
+            {loading ? 'Fetching...' : 'Get Booking Details'}
+          </button>
+
+          {/* Error Message */}
+          {error && <p className="error-message">{error}</p>}
+
+          {/* Loading Indicator */}
+          {loading && <p className="loading-text">Loading booking details...</p>}
+
+          {/* Booking Details */}
+          {booking && (
+            <div className="booking-card">
+              <h6>Train Details - {booking.train_name}</h6>
+              <p><strong>Source:</strong> {booking.source}</p>
+              <p><strong>Destination:</strong> {booking.destination}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

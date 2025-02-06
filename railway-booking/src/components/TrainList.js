@@ -222,9 +222,96 @@
 // export default TrainList;
 
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
+// import axios from "axios";
+// import "./TrainList.css"; // Import the new CSS file
+
+// const API_BASE_URL = "http://localhost:3000";
+
+// function TrainList() {
+//   const [trains, setTrains] = useState([]);
+//   const [source, setSource] = useState("");
+//   const [destination, setDestination] = useState("");
+//   const token = localStorage.getItem("token");
+
+//   const searchTrains = async () => {
+//     if (!source.trim() || !destination.trim()) {
+//       alert("❗ Please enter both Source and Destination.");
+//       return;
+//     }
+//     try {
+//       const response = await axios.get(`${API_BASE_URL}/trains`, {
+//         params: { source, destination },
+//       });
+//       setTrains(response.data);
+//     } catch (error) {
+//       console.error("Error fetching trains:", error);
+//       alert("❌ Failed to fetch trains.");
+//     }
+//   };
+
+//   const bookTrain = async (trainId) => {
+//     try {
+//       await axios.post(
+//         `${API_BASE_URL}/book`,
+//         { train_id: trainId },
+//         { headers: { Authorization: token } }
+//       );
+//       alert("🚆 Train booked successfully!");
+//     } catch (error) {
+//       console.error("Booking error:", error);
+//       alert("❌ Failed to book the train.");
+//     }
+//   };
+
+//   return (
+//     <div className="train-container">
+//       <h2 className="train-title">🚆 Search for Trains</h2>
+
+//       {/* ✅ Search Box */}
+//       <div className="search-box">
+//         <input
+//           type="text"
+//           placeholder="Source Station"
+//           value={source}
+//           onChange={(e) => setSource(e.target.value)}
+//         />
+//         <input
+//           type="text"
+//           placeholder="Destination Station"
+//           value={destination}
+//           onChange={(e) => setDestination(e.target.value)}
+//         />
+//         <button onClick={searchTrains}>🔍 Search</button>
+//       </div>
+
+//       {/* ✅ Train List */}
+//       <div className="train-list">
+//         {trains.length === 0 ? (
+//           <p className="no-trains">No trains available for the selected route.</p>
+//         ) : (
+//           trains.map((train) => (
+//             <div key={train.id} className="train-card">
+//               <h5 className="train-name">🚆 {train.name}</h5>
+//               <p className="train-route">
+//                 📍 {train.source} → {train.destination}
+//               </p>
+//               <button className="book-btn" onClick={() => bookTrain(train.id)}>
+//                 Book Now
+//               </button>
+//             </div>
+//           ))
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default TrainList;
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./TrainList.css"; // Import the new CSS file
+import "./TrainList.css"; // ✅ Keep the CSS file
 
 const API_BASE_URL = "http://localhost:3000";
 
@@ -232,31 +319,32 @@ function TrainList() {
   const [trains, setTrains] = useState([]);
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const token = localStorage.getItem("token");
 
-  const searchTrains = async () => {
-    if (!source.trim() || !destination.trim()) {
-      alert("❗ Please enter both Source and Destination.");
-      return;
-    }
+  useEffect(() => {
+    if (source.length >= 3) fetchSuggestions(source, "source");
+    if (destination.length >= 3) fetchSuggestions(destination, "destination");
+  }, [source, destination]);
+
+  const fetchSuggestions = async (query, type) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/trains`, {
-        params: { source, destination },
-      });
-      setTrains(response.data);
+      const response = await axios.get(`${API_BASE_URL}/cities`, { params: { query } });
+      if (type === "source") setSuggestions(response.data);
+      else setSuggestions(response.data);
     } catch (error) {
-      console.error("Error fetching trains:", error);
-      alert("❌ Failed to fetch trains.");
+      console.error("Error fetching city suggestions:", error);
     }
+  };
+
+  const searchTrains = async () => {
+    const response = await axios.get(`${API_BASE_URL}/trains`, { params: { source, destination } });
+    setTrains(response.data);
   };
 
   const bookTrain = async (trainId) => {
     try {
-      await axios.post(
-        `${API_BASE_URL}/book`,
-        { train_id: trainId },
-        { headers: { Authorization: token } }
-      );
+      await axios.post(`${API_BASE_URL}/book`, { train_id: trainId }, { headers: { Authorization: token } });
       alert("🚆 Train booked successfully!");
     } catch (error) {
       console.error("Booking error:", error);
@@ -266,45 +354,49 @@ function TrainList() {
 
   return (
     <div className="train-container">
-      <h2 className="train-title">🚆 Search for Trains</h2>
+      <h2 className="train-title">Search Trains</h2>
 
-      {/* ✅ Search Box */}
+      {/* ✅ Search Box with Autocomplete */}
       <div className="search-box">
         <input
           type="text"
-          placeholder="Source Station"
+          placeholder="Source"
           value={source}
           onChange={(e) => setSource(e.target.value)}
+          list="city-suggestions"
         />
         <input
           type="text"
-          placeholder="Destination Station"
+          placeholder="Destination"
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
+          list="city-suggestions"
         />
-        <button onClick={searchTrains}>🔍 Search</button>
+        <button onClick={searchTrains}>Search</button>
       </div>
+
+      {/* ✅ Datalist for City Suggestions */}
+      <datalist id="city-suggestions">
+        {suggestions.map((city, index) => (
+          <option key={index} value={city} />
+        ))}
+      </datalist>
 
       {/* ✅ Train List */}
       <div className="train-list">
-        {trains.length === 0 ? (
-          <p className="no-trains">No trains available for the selected route.</p>
-        ) : (
-          trains.map((train) => (
-            <div key={train.id} className="train-card">
-              <h5 className="train-name">🚆 {train.name}</h5>
-              <p className="train-route">
-                📍 {train.source} → {train.destination}
-              </p>
-              <button className="book-btn" onClick={() => bookTrain(train.id)}>
-                Book Now
-              </button>
+        {trains.map((train) => (
+          <div key={train.id} className="card train-card">
+            <div className="card-body">
+              <h5 className="card-title">🚆 {train.name}</h5>
+              <p className="card-text">📍 {train.source} → {train.destination}</p>
+              <button onClick={() => bookTrain(train.id)}>Book Now</button>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 export default TrainList;
+
