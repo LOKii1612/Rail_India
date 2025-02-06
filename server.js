@@ -73,25 +73,7 @@ app.get('/trains', async (req, res) => {
   res.json(trains.rows);
 });
 
-// Book a Seat
-// app.post('/book', authenticateUser, async (req, res) => {
-//   const { train_id } = req.body;
-//   try {
-//     await pool.query('BEGIN');
-//     const train = await pool.query('SELECT available_seats FROM trains WHERE id = $1 FOR UPDATE', [train_id]);
-//     if (train.rows.length === 0) throw new Error('Train not found');
-//     if (train.rows[0].available_seats === 0) throw new Error('No seats available');
 
-//     await pool.query('UPDATE trains SET available_seats = available_seats - 1 WHERE id = $1', [train_id]);
-//     const booking = await pool.query('INSERT INTO bookings (user_id, train_id) VALUES ($1, $2) RETURNING *', [req.user.id, train_id]);
-//     await pool.query('COMMIT');
-
-//     res.status(201).json({ message: 'Seat booked', booking: booking.rows[0] });
-//   } catch (error) {
-//     await pool.query('ROLLBACK');
-//     res.status(400).json({ message: error.message });
-//   }
-// });
 
 app.post('/book', authenticateUser, async (req, res) => {
     const { train_id } = req.body;
@@ -127,14 +109,15 @@ app.get('/booking/:id', authenticateUser, async (req, res) => {
   res.json(booking.rows[0]);
 });
 
-// app.get("/test-db", async (req, res) => {
-//     try {
-//       const result = await pool.query("SELECT NOW();"); // Simple query to check DB connection
-//       res.json({ message: "Database connected successfully", timestamp: result.rows[0] });
-//     } catch (error) {
-//       console.error("Database connection error:", error);
-//       res.status(500).json({ error: "Database connection failed" });
-//     }
-//   });
+//to check whether DB is connected to server
+app.get("/test-db", async (req, res) => {
+    try {
+      const result = await pool.query("SELECT NOW();"); // Simple query to check DB connection
+      res.json({ message: "Database connected successfully", timestamp: result.rows[0] });
+    } catch (error) {
+      console.error("Database connection error:", error);
+      res.status(500).json({ error: "Database connection failed" });
+    }
+  });
   
 app.listen(3000, () => console.log('Server running on port 3000'));
