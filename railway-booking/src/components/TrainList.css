@@ -1,0 +1,117 @@
+/* 🔵 Background Styling */
+.train-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light Grey Background */
+    padding: 20px;
+  }
+  
+  /* 🚆 Title */
+  .train-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0a3d62; /* Dark Blue */
+    margin-bottom: 20px;
+  }
+  
+  /* 🔍 Search Box */
+  .search-box {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-box input {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .search-box input:focus {
+    border-color: #1a5276; /* Dark Blue */
+    outline: none;
+  }
+  
+  .search-box button {
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #1a5276, #2e86c1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .search-box button:hover {
+    background: linear-gradient(45deg, #2e86c1, #1a5276);
+  }
+  
+  /* 🎫 Train List */
+  .train-list {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* ❌ No Trains Found */
+  .no-trains {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  /* 🚆 Train Cards */
+  .train-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .train-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 🏷️ Train Name */
+  .train-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0a3d62;
+    margin-bottom: 5px;
+  }
+  
+  /* 📍 Route */
+  .train-route {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* 🔘 Book Button */
+  .book-btn {
+    background: linear-gradient(45deg, #0a3d62, #1a5276);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .book-btn:hover {
+    background: linear-gradient(45deg, #1a5276, #2e86c1);
+    transform: scale(1.05);
+  }
+  

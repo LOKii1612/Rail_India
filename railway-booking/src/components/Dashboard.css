@@ -1,0 +1,92 @@
+/* ✅ Apply light cream background */
+body {
+    background-color: #f5f5dc;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ✅ Dashboard Container */
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  /* ✅ Dashboard Title */
+  .dashboard-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #8B4513; /* Saddle Brown */
+    margin-bottom: 20px;
+  }
+  
+  /* ✅ Card Styling */
+  .dashboard-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* ✅ Links Styling */
+  .dashboard-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dashboard-links li {
+    margin: 15px 0;
+  }
+  
+  .dashboard-link {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d2691e; /* Chocolate */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .dashboard-link:hover {
+    color: #a0522d; /* Darker Chocolate */
+  }
+  
+  /* ✅ Button Styling */
+  .dashboard-btn {
+    background-color: #d2691e; /* Chocolate */
+    color: #fff;
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+  }
+  
+  .dashboard-btn:hover {
+    background-color: #a0522d; /* Darker shade */
+  }
+  
+  /* ✅ Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-title {
+      font-size: 2rem;
+    }
+    .dashboard-card {
+      max-width: 100%;
+    }
+  }
+  

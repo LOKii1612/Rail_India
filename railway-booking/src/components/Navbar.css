@@ -1,0 +1,13 @@
+/* ✅ Change Navbar Background to Dark Blue */
+.navbar {
+  background-color: #0a3d62; /* Dark Blue */
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: #ffffff !important; /* Ensure text is readable */
+}
+
+.navbar a:hover {
+  color: #f1c40f; /* Gold hover effect */
+}

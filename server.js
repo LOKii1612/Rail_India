@@ -4,9 +4,16 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+
+
+
 const app = express();
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 app.use(express.json());
+
+const cors = require('cors');
+app.use(cors());
+
 
 const SECRET_KEY = process.env.JWT_SECRET;
 const ADMIN_API_KEY = process.env.ADMIN_API_KEY;
@@ -120,14 +127,14 @@ app.get('/booking/:id', authenticateUser, async (req, res) => {
   res.json(booking.rows[0]);
 });
 
-app.get("/test-db", async (req, res) => {
-    try {
-      const result = await pool.query("SELECT NOW();"); // Simple query to check DB connection
-      res.json({ message: "Database connected successfully", timestamp: result.rows[0] });
-    } catch (error) {
-      console.error("Database connection error:", error);
-      res.status(500).json({ error: "Database connection failed" });
-    }
-  });
+// app.get("/test-db", async (req, res) => {
+//     try {
+//       const result = await pool.query("SELECT NOW();"); // Simple query to check DB connection
+//       res.json({ message: "Database connected successfully", timestamp: result.rows[0] });
+//     } catch (error) {
+//       console.error("Database connection error:", error);
+//       res.status(500).json({ error: "Database connection failed" });
+//     }
+//   });
   
 app.listen(3000, () => console.log('Server running on port 3000'));
