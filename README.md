@@ -1,3 +1,47 @@
+🚆 WorkIndia - Train Booking Frontend
+======================================
+
+WorkIndia is a React-based train booking application that allows users to search for trains, view available seats, and book tickets seamlessly. The frontend is styled with Bootstrap and interacts with a backend API.
+
+📌 Features
+============
+✅ Search for trains by source and destination
+
+✅ View train details including available seats
+
+✅ Book train tickets securely
+
+✅ Responsive UI with an attractive and accessible design
+
+🛠 Tech Stack
+=============
+
+**Frontend**: React.js, Bootstrap
+
+**State Management**: React Hooks (useState, useEffect)
+
+**API Calls**: Axios
+
+**Styling**: Custom CSS & Bootstrap
+
+🎨 UI Enhancements
+==================
+Elegant Navbar with a dynamic background
+
+Stylish train cards with hover effects
+
+Custom buttons & readable fonts
+
+Fully responsive for mobile & desktop
+
+🚀 Installation & Setup
+=======================
+1️⃣ Clone the Repository
+
+git clone https://github.com/LOKii1612/Work_india_Railway.git
+
+
+
 🚆 Railway Management System API
 =================================
 
@@ -188,7 +232,8 @@ Headers:
 
 4️⃣ Users must authenticate via JWT for booking and retrieving booking details.
 
-📬 Contact
------------
+📢 Connect with Me
+-------------------
+💼 LinkedIn: https://www.linkedin.com/in/nuli-lokesh-nuli/
 
-For any issues, raise a GitHub issue or reach out at lokeshnuli16@gmail.com
+📧 Email: lokeshnuli16@gmail.com
