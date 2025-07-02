@@ -1,5 +1,5 @@
-🚆 WorkIndia - Train Booking Frontend
-======================================
+🚆 Rail_India - Train Booking Application
+=========================================
 
 WorkIndia is a React-based train booking application that allows users to search for trains, view available seats, and book tickets seamlessly. The frontend is styled with Bootstrap and interacts with a backend API.
 
